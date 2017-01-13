@@ -6,12 +6,18 @@ from github3 import login
 import getpass
 import subprocess
 import csv
+import argparse
 
 def get_name(repository):
 	return repository.name
 
-def run():
-	with open('github_token', 'r') as file:
+def get_repo(course, repository_name):
+	for repo in course.repositories():
+		if get_name(repo) == repository_name:
+			return repo
+
+def run(studentList, tokenFile):
+	with open(tokenFile, 'r') as file:
 			token = file.readline().strip()
 	github = login('snadi',token=token)
 	memberships = github.organization_memberships()
@@ -22,15 +28,26 @@ def run():
 			course = membership.organization
 			break
 
-	existing_repos = set(map(get_name,course.repositories()))	
+	existing_repo_names = set(map(get_name,course.repositories()))	
 
-	with open("StudentList.csv") as studentFile:
+	with open(studentList) as studentFile:
 		reader = csv.DictReader(studentFile)
 		for student in reader:
 			repoName = student['CCID'] + "-201" 
-			if not repoName in existing_repos and len(student['GitHubUsername']) > 0:
+			print "Creating repository for ",repoName
+			if not repoName in existing_repo_names and len(student['GitHubUsername']) > 0:
 				repository = course.create_repository(repoName, private=True)
 				repository.add_collaborator(student['GitHubUsername'])
+				repository.add_collaborator('juehui')
+				repository.add_collaborator('uacspang')
+				repository.add_collaborator('flopezde')
+				repository.add_collaborator('cmbuhler')
+				repository.add_collaborator('gojeffcho')
 				subprocess.call("./CreateRepoStructure.sh " + repoName, shell=True)
 
-run()
+parser = argparse.ArgumentParser(description='Create repos')
+parser.add_argument('--list', help='CSV file')
+parser.add_argument('--token', help='Github token file')
+
+args = parser.parse_args()
+run(args.list, args.token)

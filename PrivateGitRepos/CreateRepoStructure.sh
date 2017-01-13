@@ -1,3 +1,5 @@
+#!/bin/bash
+
 repoName=$1
 
 git clone https://github.com/CMPUT201-W17/$repoName
