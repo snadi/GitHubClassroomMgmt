@@ -34,8 +34,9 @@ def run(studentList, tokenFile):
 		reader = csv.DictReader(studentFile)
 		for student in reader:
 			repoName = student['CCID'] + "-201" 
-			print "Creating repository for ",repoName
+			print "Reading ", repoName
 			if not repoName in existing_repo_names and len(student['GitHubUsername']) > 0:
+				print "Creating repository for ",repoName
 				repository = course.create_repository(repoName, private=True)
 				repository.add_collaborator(student['GitHubUsername'])
 				repository.add_collaborator('juehui')
