@@ -1,4 +1,4 @@
-#Private GitHub repos 
+# Private GitHub repos 
 
 This folder has scripts that create private GitHub repos in an existing organization. Each repo will then have the same directory structure. Scripts still need some cleanup and moving some things as parameters but they should work for now :-) I use python for creating the repos.
 
