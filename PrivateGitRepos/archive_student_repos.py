@@ -11,38 +11,37 @@ import argparse
 def get_name(repository):
 	return repository.name
 
-def get_repo(course, repository_name):
-	for repo in course.repositories():
-		if get_name(repo) == repository_name:
-			return repo
-
-def run(studentList, tokenFile):
+def run(user, tokenFile, org, suffix=""):
 	with open(tokenFile, 'r') as file:
 			token = file.readline().strip()
-	github = login('snadi',token=token)
+	github = login(user,token=token)
 	memberships = github.organization_memberships()
 	course = None
 
 	for membership in memberships:
-		if membership.organization.login == "CMPUT201-W17":
+		if membership.organization.login.lower() == org.lower():
 			course = membership.organization
 			break
 
 	existing_repo_names = set(map(get_name,course.repositories()))	
 
-	for repo in existing_repo_names:
-		print repo
-	# with open(studentList) as studentFile:
-	# 	reader = csv.DictReader(studentFile)
-	# 	for student in reader:
-	# 		repoName = student['CCID'] + "-201" 
-	# 		print "Archiving ", repoName
-	# 		repository.
-
+	for repoName in existing_repo_names:
+		if(repoName.endswith("-201")):
+			new_name = repoName + "-" + suffix
+			print "Archiving " + repoName + " as " + new_name
+			#stupid way to do this.. find a proper API but temp for now
+			command = "curl \
+	-H \"Authorization: token " + token +"\" \
+	-X PATCH \
+	--data '{ \"archived\": true, \"name\": \"" + new_name + "\"}' \
+	https://api.github.com/repos/" + org + "/" + repoName
+			subprocess.call(command, shell=True)
 
 parser = argparse.ArgumentParser(description='Create repos')
-parser.add_argument('--list', help='CSV file')
 parser.add_argument('--token', help='Github token file')
+parser.add_argument('--suffix', help='Optional suffix to add to repo name when archiving')
+parser.add_argument('--org', help='Organization name')
+parser.add_argument('--user', help='GitHub username')
 
 args = parser.parse_args()
-run(args.list, args.token)
+run(args.user, args.token, args.org, args.suffix)
