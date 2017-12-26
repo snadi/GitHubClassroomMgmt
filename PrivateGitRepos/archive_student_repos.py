@@ -26,16 +26,15 @@ def run(user, tokenFile, org, suffix=""):
 	existing_repo_names = set(map(get_name,course.repositories()))	
 
 	for repoName in existing_repo_names:
-		if(repoName.endswith("-201")):
-			new_name = repoName + "-" + suffix
-			print "Archiving " + repoName + " as " + new_name
-			#stupid way to do this.. find a proper API but temp for now
-			command = "curl \
-	-H \"Authorization: token " + token +"\" \
-	-X PATCH \
-	--data '{ \"archived\": true, \"name\": \"" + new_name + "\"}' \
-	https://api.github.com/repos/" + org + "/" + repoName
-			subprocess.call(command, shell=True)
+		new_name = repoName + "-" + suffix
+		print "Archiving " + repoName + " as " + new_name
+		#stupid way to do this.. find a proper API but temp for now
+		command = "curl \
+-H \"Authorization: token " + token +"\" \
+-X PATCH \
+--data '{ \"archived\": true, \"name\": \"" + new_name + "\"}' \
+https://api.github.com/repos/" + org + "/" + repoName
+		subprocess.call(command, shell=True)
 
 parser = argparse.ArgumentParser(description='Create repos')
 parser.add_argument('--token', help='Github token file')
