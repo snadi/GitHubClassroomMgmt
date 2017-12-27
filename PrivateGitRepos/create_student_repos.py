@@ -16,7 +16,7 @@ def get_repo(course, repository_name):
 		if get_name(repo) == repository_name:
 			return repo
 
-def run(studentList, tokenFile):
+def run(username, organization, tokenFile, studentList):
 
 	with open(tokenFile, 'r') as file:
 			token = file.readline().strip()
@@ -25,7 +25,7 @@ def run(studentList, tokenFile):
 	course = None
 
 	for membership in memberships:
-		if membership.organization.login == "CMPUT201-W17":
+		if membership.organization.login.lower() == organization.lower():
 			course = membership.organization
 			break
 
@@ -33,7 +33,7 @@ def run(studentList, tokenFile):
 
 	with open(studentList) as studentFile:
 		#get licsense file
-		subprocess.call("git clone https://github.com/CMPUT201/UALBERTA-CMPUT201License.git")
+		subprocess.call("./getLicenseRepo.sh", shell=True)
 		reader = csv.DictReader(studentFile)
 		for student in reader:
 			repoName = student['CCID'] + "-201-W18" 
@@ -47,6 +47,8 @@ def run(studentList, tokenFile):
 parser = argparse.ArgumentParser(description='Create repos')
 parser.add_argument('--list', help='CSV file')
 parser.add_argument('--token', help='Github token file')
+parser.add_argument('--organization', help="Course github organization")
+parser.add_argument('--username', help='Github username')
 
 args = parser.parse_args()
-run(args.list, args.token)
+run(args.username, args.organization, args.token, args.list)
