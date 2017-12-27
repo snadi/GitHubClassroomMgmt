@@ -1,8 +1,10 @@
 #!/bin/bash
 
-repoName=$1
+organization=$1
+repoName=$2
 
-git clone https://github.com/CMPUT201-W17/$repoName
+repoURL="https://github.com/$organization/$repoName"
+git clone repoURL
 
 cd $repoName
 

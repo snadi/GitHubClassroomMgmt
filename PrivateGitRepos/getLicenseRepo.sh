@@ -1,4 +1,4 @@
-#!/bash/bin
+#!/bin/bash
 
 if [ -d UALBERTA-CMPUT201License ]; then
 	cd UALBERTA-CMPUT201License
