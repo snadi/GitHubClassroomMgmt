@@ -17,6 +17,7 @@ def get_repo(course, repository_name):
 			return repo
 
 def run(studentList, tokenFile):
+
 	with open(tokenFile, 'r') as file:
 			token = file.readline().strip()
 	github = login('snadi',token=token)
@@ -31,19 +32,16 @@ def run(studentList, tokenFile):
 	existing_repo_names = set(map(get_name,course.repositories()))	
 
 	with open(studentList) as studentFile:
+		#get licsense file
+		subprocess.call("git clone https://github.com/CMPUT201/UALBERTA-CMPUT201License.git")
 		reader = csv.DictReader(studentFile)
 		for student in reader:
-			repoName = student['CCID'] + "-201" 
+			repoName = student['CCID'] + "-201-W18" 
 			print "Reading ", repoName
 			if not repoName in existing_repo_names and len(student['GitHubUsername']) > 0:
 				print "Creating repository for ",repoName
 				repository = course.create_repository(repoName, private=True)
 				repository.add_collaborator(student['GitHubUsername'])
-				repository.add_collaborator('juehui')
-				repository.add_collaborator('uacspang')
-				repository.add_collaborator('flopezde')
-				repository.add_collaborator('cmbuhler')
-				repository.add_collaborator('gojeffcho')
 				subprocess.call("./CreateRepoStructure.sh " + repoName, shell=True)
 
 parser = argparse.ArgumentParser(description='Create repos')

@@ -6,6 +6,11 @@ git clone https://github.com/CMPUT201-W17/$repoName
 
 cd $repoName
 
+cp ../UALBERTA-CMPUT201License/CMPUT201License.md LICENSE.md
+
+git add LICSENSE.md
+git commit -am "Add license file"
+
 #Lab folders
 mkdir Labs
 echo "#Labs directory\n Please do not change this directory structure. Each lab should go under its respective folder.">>Labs/README.md
