@@ -42,7 +42,7 @@ def run(username, organization, tokenFile, studentList):
 				print "Creating repository for ",repoName
 				repository = course.create_repository(repoName, private=True)
 				repository.add_collaborator(student['GitHubUsername'])
-				subprocess.call("./CreateRepoStructure.sh " + organization + repoName, shell=True)
+				subprocess.call("./CreateRepoStructure.sh " + organization + " " + repoName, shell=True)
 
 parser = argparse.ArgumentParser(description='Create repos')
 parser.add_argument('--list', help='CSV file')
