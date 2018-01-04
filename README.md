@@ -13,6 +13,8 @@ The following python liraries are being used:
 - argparse
 - os
 
+The scripts have been tested with Python 2.7.10
+
 # Script descriptions:
 
 Create a directory called `assignmentName` where all the repos for this assignment will be cloned to. You can run any of the following scripts from within that directory.
