@@ -41,7 +41,7 @@ def run(username, tokenFile, organization, deadline,assignment):
 parser = argparse.ArgumentParser(description='Collect repos')
 parser.add_argument('--username', help='Github username')
 parser.add_argument('--tokenFile', help='File containing your github token')
-parser.add_argument('--deadline', help="Deadline of the given assignment in format \"%Y-%m-%d %H:%M:%S -0700\" where -0700 indicates the MST time zone")
+parser.add_argument('--deadline', help="Deadline of the given assignment in format \"YYYY-MM-DD HH:MM:SS -0700\" where -0700 indicates the MST time zone")
 parser.add_argument('--organization', help="Course github organization")
 parser.add_argument('--assignment', help="Assignment name")
 
