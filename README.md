@@ -7,11 +7,6 @@ This folder contains scripts to collect assignments and push feedback to student
 The following python liraries are being used:
 
 - [github3](https://github.com/sigmavirus24/github3.py)
-- getpass
-- subprocess
-- csv
-- argparse
-- os
 
 The scripts have been tested with Python 2.7.10
 
