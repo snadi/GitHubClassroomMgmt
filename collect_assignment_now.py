@@ -10,7 +10,7 @@ import csv
 import argparse
 import os
 
-def run(username, tokenFile, organization, deadline,assignment):
+def run(username, tokenFile, organization,assignment):
 	with open(tokenFile, 'r') as file:
 			token = file.readline().strip()
 	github = login(username,token=token)
