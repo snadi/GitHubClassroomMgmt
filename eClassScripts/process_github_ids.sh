@@ -11,16 +11,17 @@ csv_file="ccid_to_github_mapping.csv"
 echo "CCID,GITHUB_ID" > $csv_file
 
 for dir in ./* ; do
-  if [ -d "$file" ]; then
+  if [ -d "$dir" ]; then
  	#there should be just one file in there so this loop will run once
   for fullfile in "$dir"/*.txt; do
-	
+
 	#https://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash
 	filename=$(basename "$fullfile")
-	#echo "$filename"
 	ccid="${filename%.*}"
-#problem with space in file names now
-	echo "$ccid,`cat "$fullfile"`" >> $csv_file
+
+	githubID=`cat "$fullfile"`
+	echo "$ccid,$githubID" >> $csv_file
+	
 	done
   fi
 done
