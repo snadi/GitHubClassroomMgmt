@@ -1,6 +1,6 @@
 # Scripts to manage GitHub Classroom
 
-This folder contains scripts to collect assignments and push feedback to student repositories in a given GitHub organization. There are no repo creation scripts here, since we use GitHub classroom for this part. Loop at [https://github.com/snadi/UsefulCourseScripts](https://github.com/snadi/UsefulCourseScripts) if you are interested in that.
+This folder contains scripts to collect assignments and push feedback to student repositories in a given GitHub organization. There are no repo creation scripts here, since we use GitHub classroom for this part. Look at [https://github.com/snadi/UsefulCourseScripts](https://github.com/snadi/UsefulCourseScripts) if you are interested in that.
 
 # Prerequisites
 
