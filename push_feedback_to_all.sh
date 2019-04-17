@@ -9,7 +9,7 @@ for dir in */; do
     	echo "Pushing for $dir"
        	cd $dir
         git add $1
-        git commit -am "Grade assignment"
+        git commit $1 -m "Grade assignment"
         git pull --rebase
         git push
         cd ..
