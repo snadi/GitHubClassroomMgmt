@@ -4,20 +4,22 @@ This folder contains scripts to collect assignments and push feedback to student
 
 # Prerequisites
 
-The following python liraries are being used:
+The following python libraries are being used:
 
 - [github3](https://github.com/sigmavirus24/github3.py)
 
-The scripts have been tested with Python 2.7.10
+Install packages with: `pip3 install -r requirements.txt`
+
+The scripts have been tested with Python 3.9.1(latest).
 
 # Script descriptions:
 
 Create a directory called `assignmentName` where all the repos for this assignment will be cloned to. You can run any of the following scripts from within that directory.
 
-- `collect_assignment_at_deadline.py`: For a given assignment, it finds the closest commit that happens before a given deadline (inclusive) and clones/checks out the repository at that commit. Run `python collect_assignments_at_deadline.py --help` to see required arguments.
+- `collect_assignment_at_deadline.py`: For a given assignment, it finds the closest commit that happens before a given deadline (inclusive) and clones/checks out the repository at that commit. Run `python3 collect_assignments_at_deadline.py --help` to see required arguments.
 
 - `collect_assignments_now.py`: same as above but gets the current state of the repo (can be useful if you will pull all repos at the deadline yourself)
 
-- `push_feedback_to_all.sh`: goes through all the directories in the current folder and pushes the feedback file in each student's repo. The name of the feedback file is passed as the first argument. IMPORTANT: because the collection process leaves the repo in a detached state, make sure that your marking script does `git checkout master` before running this script. Otherwise, this script will not be able to push correctly while repo is in a detached state. You could obviously also push the feedback script directly in your marking phase. However, it is probably a good idea for the instructor to approve all grades and feedback before showing it to the students.
+- `push_feedback_to_all.sh`: goes through all the directories in the current folder and pushes the feedback file in each student's repo. The name of the feedback file is passed as the first argument. IMPORTANT: because the collection process leaves the repo in a detached state, make sure that your marking script does `git checkout [<HEAD branch>]` before running this script. Otherwise, this script will not be able to push correctly while repo is in a detached state. You could obviously also push the feedback script directly in your marking phase. However, it is probably a good idea for the instructor to approve all grades and feedback before showing it to the students.
 
 - `update_all_repos.sh`: simply loops through all the directories in the current folder and runs git pull.
