@@ -29,12 +29,12 @@ def run(username, tokenFile, organization, deadline,assignment):
 			if (os.path.exists(repo.name)): #check first that we don't already have a local copy of this repo
 				os.chdir(currentDir + "/" + repo.name)
 				subprocess.call("git pull", shell=True)
-				subprocess.call("git checkout \"`git rev-list master -n 1 --first-parent --before=\"" + deadline + "\"`\"", shell=True);
+				subprocess.call("git checkout \"`git rev-list --all -n 1 --first-parent --before=\"" + deadline + "\"`\"", shell=True);
 				os.chdir(currentDir)
 			else:
 				subprocess.call("git clone " + repo.ssh_url, shell=True)
 				os.chdir(currentDir + "/" + repo.name)
-				subprocess.call("git checkout \"`git rev-list master -n 1 --first-parent --before=\"" + deadline + "\"`\"", shell=True);
+				subprocess.call("git checkout \"`git rev-list --all -n 1 --first-parent --before=\"" + deadline + "\"`\"", shell=True);
 				os.chdir(currentDir)
 
 
