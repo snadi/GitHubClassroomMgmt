@@ -10,6 +10,20 @@ import csv
 import configparser
 import os
 
+def get_repos(repo, dir):
+	repoDir = os.path.join(dir, repo.name)
+	if (os.path.exists(repoDir)): #check first that we don't already have a local copy of this repo
+		os.chdir(repoDir)
+		subprocess.call('git pull', shell=True)
+		if deadline:
+			subprocess.call("git checkout \"`git rev-list --all -n 1 --first-parent --before=\"" + deadline + "\"`\"", shell=True);
+	else:
+		os.chdir(dir)
+		subprocess.call('git clone ' + repo.ssh_url, shell=True)
+		if deadline:
+			os.chdir(repoDir)
+			subprocess.call("git checkout \"`git rev-list --all -n 1 --first-parent --before=\"" + deadline + "\"`\"", shell=True);
+
 def run(username, token, organization, prefix, list, deadline):
 	with open(token, 'r') as f:
 		token = f.readline().strip()
@@ -38,27 +52,12 @@ def run(username, token, organization, prefix, list, deadline):
 	else:
 		gh_usernames = []
 
-	repos = []
 	for repo in course.repositories():
 		if len(gh_usernames):
 			if repo.name.replace('{}-'.format(prefix), '') in gh_usernames:
-				repos.append(repo)
+				get_repos(repo, newDir)
 		elif repo.name.startswith(prefix):
-			repos.append(repo)
-
-	for repo in repos:
-		repoDir = os.path.join(newDir, repo.name)
-		if (os.path.exists(repoDir)): #check first that we don't already have a local copy of this repo
-			os.chdir(repoDir)
-			subprocess.call('git pull', shell=True)
-			if deadline:
-				subprocess.call("git checkout \"`git rev-list --all -n 1 --first-parent --before=\"" + deadline + "\"`\"", shell=True);
-		else:
-			os.chdir(newDir)
-			subprocess.call('git clone ' + repo.ssh_url, shell=True)
-			if deadline:
-				os.chdir(repoDir)
-				subprocess.call("git checkout \"`git rev-list --all -n 1 --first-parent --before=\"" + deadline + "\"`\"", shell=True);
+			get_repos(repo, newDir)
 
 if __name__ == '__main__':
 	config = configparser.ConfigParser()
