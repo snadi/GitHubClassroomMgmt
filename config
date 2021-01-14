@@ -8,11 +8,11 @@ token = token_file
 # Course github organization
 organization = cmput201-w21
 
-# Assignment or lab name
+# Assignment or lab name, only collect repos with this prefix (e.g., labs-1asso)
 prefix = labs
 
 # CCID list
-# Provide no value to collect all repos with given prefix
+# Provide no value to collect all repos
 list = ccid_list
 
 # Deadline of the given assignment or lab in format \"YYYY-MM-DD HH:MM:SS -0700\" where -0700 indicates the MST time zone

@@ -1,6 +1,5 @@
 token_file
-ccid_list
 .DS_Store
-.vscode
+.vscode/*
 labs/*
 assignment?/*
