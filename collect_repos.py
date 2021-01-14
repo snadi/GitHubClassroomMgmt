@@ -10,7 +10,7 @@ import csv
 import configparser
 import os
 
-def get_repos(repo, dir):
+def get_repo(repo, dir):
 	repoDir = os.path.join(dir, repo.name)
 	if (os.path.exists(repoDir)): #check first that we don't already have a local copy of this repo
 		os.chdir(repoDir)
@@ -55,9 +55,9 @@ def run(username, token, organization, prefix, list, deadline):
 	for repo in course.repositories():
 		if len(gh_usernames):
 			if repo.name.replace('{}-'.format(prefix), '') in gh_usernames:
-				get_repos(repo, newDir)
+				get_repo(repo, newDir)
 		elif repo.name.startswith(prefix):
-			get_repos(repo, newDir)
+			get_repo(repo, newDir)
 
 if __name__ == '__main__':
 	config = configparser.ConfigParser()
