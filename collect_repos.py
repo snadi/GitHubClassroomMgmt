@@ -34,14 +34,14 @@ def run(username, token, organization, prefix, list, deadline):
 	if list:
 		with open(list, 'r') as f:
 			ccids = [ccid.strip() for ccid in f.readlines()]
-			usernames = [mapping[ccid] for ccid in ccids]  #convert ccid to github username
+			gh_usernames = [mapping[ccid] for ccid in ccids]  #convert ccid to github username
 	else:
-		usernames = []
+		gh_usernames = []
 
 	repos = []
 	for repo in course.repositories():
-		if len(usernames):
-			if repo.name.replace('{}-'.format(prefix), '') in usernames:
+		if len(gh_usernames):
+			if repo.name.replace('{}-'.format(prefix), '') in gh_usernames:
 				repos.append(repo)
 		elif repo.name.startswith(prefix):
 			repos.append(repo)
