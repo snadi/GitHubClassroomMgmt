@@ -10,7 +10,7 @@ import csv
 import configparser
 import os
 
-def run(username, token, organization, prefix, list, deadline=None):
+def run(username, token, organization, prefix, list, deadline):
 	with open(token, 'r') as f:
 		token = f.readline().strip()
 
@@ -31,9 +31,12 @@ def run(username, token, organization, prefix, list, deadline=None):
 		reader = csv.reader(f)
 		mapping = {rows[1]:rows[2] for rows in reader}
 
-	with open(list, 'r') as f:
-		ccids = [ccid.strip() for ccid in f.readlines()]
-		usernames = [mapping[ccid] for ccid in ccids]  #convert ccid to github username
+	if list:
+		with open(list, 'r') as f:
+			ccids = [ccid.strip() for ccid in f.readlines()]
+			usernames = [mapping[ccid] for ccid in ccids]  #convert ccid to github username
+	else:
+		usernames = []
 
 	repos = []
 	for repo in course.repositories():
@@ -67,10 +70,7 @@ if __name__ == '__main__':
 	token = config['token']
 	organization = config['organization']
 	prefix = config['prefix']
-	list = config['list']
-
-	deadline = config['deadline']
-	if deadline:
-		run(username, token, organization, prefix, list, deadline=deadline)
-	else:
-		run(username, token, organization, prefix, list)	
+	list = config['list'] and config['list'] or None
+	deadline = config['deadline'] and config['deadline'] or None
+	
+	run(username, token, organization, prefix, list, deadline)

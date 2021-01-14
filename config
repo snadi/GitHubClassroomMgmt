@@ -12,9 +12,9 @@ organization = cmput201-w21
 prefix = labs
 
 # CCID list
-# Provide an empty file for collecting all repos with prefix
+# Provide no value to collect all repos with given prefix
 list = ccid_list
 
 # Deadline of the given assignment or lab in format \"YYYY-MM-DD HH:MM:SS -0700\" where -0700 indicates the MST time zone
-# No value means collect repos at current time
+# Provide no value to collect repos with the latest commit.=
 deadline = 2021-01-13 00:00:00 -700
