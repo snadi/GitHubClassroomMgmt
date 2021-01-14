@@ -1,7 +1,11 @@
 for dir in */; do
-    if [[ -d $dir ]]; then
-        cd $dir
-        git pull
-        cd ..
-    fi
+    cd $dir
+    for subdir in */; do
+        if [[ -d $subdir ]]; then
+            cd $subdir
+            git pull
+            cd ..
+        fi
+    done
+    cd ..
 done

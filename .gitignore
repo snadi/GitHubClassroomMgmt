@@ -1,2 +1,5 @@
-token
+token_file
 .DS_Store
+.vscode/*
+labs/*
+assignment?/*
