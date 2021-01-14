@@ -53,7 +53,6 @@ def run(username, token, organization, prefix, list, deadline):
 			subprocess.call('git pull', shell=True)
 			if deadline:
 				subprocess.call("git checkout \"`git rev-list --all -n 1 --first-parent --before=\"" + deadline + "\"`\"", shell=True);
-			os.chdir(newDir)
 		else:
 			os.chdir(newDir)
 			subprocess.call('git clone ' + repo.ssh_url, shell=True)
