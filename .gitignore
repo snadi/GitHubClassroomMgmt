@@ -1,2 +1,6 @@
-token
+token_file
+ccid_list
 .DS_Store
+.vscode
+labs/*
+assignment?/*

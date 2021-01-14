@@ -1,0 +1,20 @@
+[DEFAULT]
+# Github username
+username = 1asso 
+
+# File containing your github token
+token = token_file
+
+# Course github organization
+organization = cmput201-w21
+
+# Assignment or lab name
+prefix = labs
+
+# CCID list
+# Provide an empty file for collecting all repos with prefix
+list = ccid_list
+
+# Deadline of the given assignment or lab in format \"YYYY-MM-DD HH:MM:SS -0700\" where -0700 indicates the MST time zone
+# No value means collect repos at current time
+deadline = 2021-01-13 00:00:00 -700

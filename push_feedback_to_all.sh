@@ -5,14 +5,18 @@
 feedback_filename=$1
 
 for dir in */; do
-    if [[ -d $dir ]]; then
-    	echo "Pushing for $dir"
-       	cd $dir
-        git checkout master
-        git add $1
-        git commit $1 -m "Grade assignment"
-        git pull --rebase
-        git push
-        cd ..
-    fi
+    cd $dir
+    for subdir in */; do
+        if [[ -d $subdir ]]; then
+            echo "Pushing for $subdir"
+            cd $subdir
+            git checkout master
+            git add $1
+            git commit $1 -m "Grade assignment"
+            git pull --rebase
+            git push
+            cd ..
+        fi
+    done
+    cd ..
 done
