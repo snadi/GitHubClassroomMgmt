@@ -43,7 +43,7 @@ def run(username, token, organization, prefix, list, deadline):
 
 	with open('student_list.csv', mode='r') as f:
 		reader = csv.reader(f)
-		mapping = {rows[1]:rows[2] for rows in reader}
+		mapping = {rows[0]:rows[1] for rows in reader}
 
 	if list:
 		with open(list, 'r') as f:
