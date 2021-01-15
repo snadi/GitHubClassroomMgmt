@@ -10,7 +10,7 @@ for dir in */; do
         if [[ -d $subdir ]]; then
             echo "Pushing for $subdir"
             cd $subdir
-            git checkout master
+            git checkout main
             git add $1
             git commit $1 -m "Grade assignment"
             git pull --rebase
