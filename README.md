@@ -2,11 +2,6 @@
 
 This folder contains scripts to collect assignments or labs and push feedback to student repositories in a given GitHub organization. There are no repository creation scripts here, since we use GitHub classroom for this part. 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> b860ba0978c189b4c8f44325f6dd70ccd5df531c
 ## Dependencies
 
 - Python 3
