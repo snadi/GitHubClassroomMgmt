@@ -2,7 +2,9 @@
 
 This folder contains scripts to collect assignments or labs and push feedback to student repositories in a given GitHub organization. There are no repository creation scripts here, since we use GitHub classroom for this part. 
 
-##Dependencies
+
+
+## Dependencies
 
 - Python 3
 - [github3](https://github.com/sigmavirus24/github3.py)
@@ -13,6 +15,8 @@ pip3 install -r requirements.txt
 ````
 
 These scripts have been tested with Python 3.9.1(latest).
+
+
 
 ## Directory structure
 
@@ -37,6 +41,8 @@ These scripts have been tested with Python 3.9.1(latest).
 │   └── ...                
 └── ...											# Other subdirectories (e.g., labs, assignment2, etc.)
 ```
+
+
 
 ## Instructions
 
