@@ -67,7 +67,9 @@ To use these scripts, please follow the following steps:
    
    Python3 collect_repos.py
    
-   # If you are grading assignment1, a directory called 'assignment1' will be created, where all the repos for assignment1 will be cloned to.
+   # If you are grading assignment1, 
+   # a directory called 'assignment1' will be created, 
+   # where all the repos for assignment1 will be cloned to.
    ```
 
 5. **Grade**
@@ -79,8 +81,11 @@ To use these scripts, please follow the following steps:
    
    ./push_feedback.sh feedback.txt
    
-   # This will go through all repos in the subdirectories (check directory structure above), push every file named 'feedback.txt' to corresponding repositories, so to name all feedback files with the same name is a good move.
-   # Because the collection process leaves the repository in a detached state, this script will checkout main branch, pull with rebase, and push.
+   # This will go through all repos in the subdirectories (check directory structure above), 
+   # push every file named 'feedback.txt' to corresponding repositories, 
+   # so to name all feedback files with the same name is a good move.
+   # Because the collection process leaves the repository in a detached state, 
+   # this script will checkout main branch, pull with rebase, and push.
    ```
 
 7. **Update repositories (optional)**
@@ -90,5 +95,5 @@ To use these scripts, please follow the following steps:
    
    ./update_repos.sh
    
-   # This will go through all repos in the subdirectories, update them to the latest commit.
+   # This will go through all repos in the subdirectories and update them to the latest commit.
    ```
