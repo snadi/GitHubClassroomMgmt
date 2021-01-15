@@ -2,7 +2,7 @@
 
 This folder contains scripts to collect assignments or labs and push feedback to student repositories in a given GitHub organization. There are no repository creation scripts here, since we use GitHub classroom for this part. 
 
-##Dependencies
+## Dependencies
 
 - Python 3
 - [github3](https://github.com/sigmavirus24/github3.py)
@@ -18,24 +18,24 @@ These scripts have been tested with Python 3.9.1(latest).
 
 ```
 .
-├── ccid_list.txt						# Contains ccids you need to grade
-├── collect_repos.py				# Collect repos
-├── config									# Configration file for collect_repos.py
-├── push_feedback.sh				# Push feedback to all repos
-├── README.md 							# This file
-├── requirements.txt				# For dependencies installation
-├── student_list.csv				# A mapping from ccids to github usernames
-├── token_file.txt					# Your Github access token(You need to create this file)
-├── update_repos.sh					# Update all repos
+├── ccid_list.txt               # Contains ccids you need to grade
+├── collect_repos.py            # Collect repos
+├── config                      # Configration file for collect_repos.py
+├── push_feedback.sh            # Push feedback to all repos
+├── README.md                   # This file
+├── requirements.txt            # For dependencies installation
+├── student_list.csv            # A mapping from ccids to github usernames
+├── token_file.txt              # Your Github access token(You need to create this file)
+├── update_repos.sh             # Update all repos
 │
-├── assignment1             # A subdirectory named with an assignment or lab name 						
-│		│												# It's automatically created after running collect_repos.py
+├── assignment1                 # A subdirectory named with an assignment or lab name 						
+│   │                           # It's automatically created after running collect_repos.py
 │   ├── repo1 
-│   │   ├── feedback.txt		# Feedback you made
+│   │   ├── feedback.txt        # Feedback you made
 │   │   └── ...
-│   ├── repo2        				# Student's repository	
+│   ├── repo2                   # Student's repository	
 │   └── ...                
-└── ...											# Other subdirectories (e.g., labs, assignment2, etc.)
+└── ...                         # Other subdirectories (e.g., labs, assignment2, etc.)
 ```
 
 ## Instructions
