@@ -2,8 +2,11 @@
 
 This folder contains scripts to collect assignments or labs and push feedback to student repositories in a given GitHub organization. There are no repository creation scripts here, since we use GitHub classroom for this part. 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b860ba0978c189b4c8f44325f6dd70ccd5df531c
 ## Dependencies
 
 - Python 3
@@ -22,24 +25,24 @@ These scripts have been tested with Python 3.9.1(latest).
 
 ```
 .
-├── ccid_list.txt						# Contains ccids you need to grade
-├── collect_repos.py				# Collect repos
-├── config									# Configration file for collect_repos.py
-├── push_feedback.sh				# Push feedback to all repos
-├── README.md 							# This file
-├── requirements.txt				# For dependencies installation
-├── student_list.csv				# A mapping from ccids to github usernames
-├── token_file.txt					# Your Github access token(You need to create this file)
-├── update_repos.sh					# Update all repos
+├── ccid_list.txt               # Contains ccids you need to grade
+├── collect_repos.py            # Collect repos
+├── config                      # Configration file for collect_repos.py
+├── push_feedback.sh            # Push feedback to all repos
+├── README.md                   # This file
+├── requirements.txt            # For dependencies installation
+├── student_list.csv            # A mapping from ccids to github usernames
+├── token_file.txt              # Your Github access token(You need to create this file)
+├── update_repos.sh             # Update all repos
 │
-├── assignment1             # A subdirectory named with an assignment or lab name 						
-│		│												# It's automatically created after running collect_repos.py
+├── assignment1                 # A subdirectory named with an assignment or lab name 						
+│   │                           # It's automatically created after running collect_repos.py
 │   ├── repo1 
-│   │   ├── feedback.txt		# Feedback you made
+│   │   ├── feedback.txt        # Feedback you made
 │   │   └── ...
-│   ├── repo2        				# Student's repository	
+│   ├── repo2                   # Student's repository	
 │   └── ...                
-└── ...											# Other subdirectories (e.g., labs, assignment2, etc.)
+└── ...                         # Other subdirectories (e.g., labs, assignment2, etc.)
 ```
 
 
@@ -73,7 +76,9 @@ To use these scripts, please follow the following steps:
    
    Python3 collect_repos.py
    
-   # If you are grading assignment1, a directory called 'assignment1' will be created, where all the repos for assignment1 will be cloned to.
+   # If you are grading assignment1, 
+   # a directory called 'assignment1' will be created, 
+   # where all the repos for assignment1 will be cloned to.
    ```
 
 5. **Grade**
@@ -85,8 +90,12 @@ To use these scripts, please follow the following steps:
    
    ./push_feedback.sh feedback.txt
    
-   # This will go through all repos in the subdirectories (check directory structure above), push every file named 'feedback.txt' to corresponding repositories, so to name all feedback files with the same name is a good move.
-   # Because the collection process leaves the repository in a detached state, this script will checkout main branch, pull with rebase, and push.
+   # This will go through all repos in the subdirectories (check directory structure above), 
+   # push every file named 'feedback.txt' to corresponding repositories, 
+   # so to name all feedback files with the same name is a good move.
+   
+   # Because the collection process leaves the repository in a detached state, 
+   # this script will checkout main branch, pull with rebase, and push.
    ```
 
 7. **Update repositories (optional)**
@@ -96,5 +105,5 @@ To use these scripts, please follow the following steps:
    
    ./update_repos.sh
    
-   # This will go through all repos in the subdirectories, update them to the latest commit.
+   # This will go through all repos in the subdirectories and update them to the latest commit.
    ```
