@@ -2,6 +2,8 @@
 
 This folder contains scripts to collect assignments or labs and push feedback to student repositories in a given GitHub organization. There are no repository creation scripts here, since we use GitHub classroom for this part. 
 
+
+
 ## Dependencies
 
 - Python 3
@@ -30,12 +32,13 @@ These scripts have been tested with Python 3.9.1(latest).
 ├── token_file.txt              # Your Github access token(You need to create this file)
 ├── update_repos.sh             # Update all repos
 │
-├── assignment1                 # A subdirectory named with an assignment or lab name 						
+├── assignment1                 # A subdirectory named with an assignment or lab name 			│		│	
 │   │                           # It's automatically created after running collect_repos.py
 │   ├── repo1 
-│   │   ├── feedback.txt        # Feedback you made
+│   │   ├── feedback.txt        # Feedback you made. Could have been generated 
+│   │   │                       # with marking scripts you had or added manually
 │   │   └── ...
-│   ├── repo2                   # Student's repository	
+│   ├── repo2                   # Student's repository (e.g., labs-GithubUsername)	
 │   └── ...                
 └── ...                         # Other subdirectories (e.g., labs, assignment2, etc.)
 ```
@@ -56,8 +59,8 @@ To use these scripts, please follow the following steps:
 
    - Open `config`, make your own configuration. Typically, you need to change `username`, `prefix` and `deadline`.
    - `Prefix` is the name of lab or assignment you are grading (e.g., assignment1).
-   - If you want to collect all repos, provide no value to key `list`.
-   - If you want to collect repos with the latest commit, provide no value to key `deadline`. Otherwise, the script finds the closest commit that happens before a given deadline (inclusive) and clones/checks out the repository at that commit.
+   - If you want to collect all repos, provide no value to key `list`. Otherwise, use `ccid_list.txt` as value.
+   - If you want to collect repos with the latest commit, provide no value to key `deadline`. Otherwise, the script finds the closest commit that happens before a given deadline (inclusive) and clones/checks out the repository at that commit. 
 
 3. **Add ccids**
 
@@ -69,7 +72,7 @@ To use these scripts, please follow the following steps:
    ```shell
    # Run this command in the root directory.
    
-   Python3 collect_repos.py
+   python3 collect_repos.py
    
    # If you are grading assignment1, 
    # a directory called 'assignment1' will be created, 
@@ -77,6 +80,8 @@ To use these scripts, please follow the following steps:
    ```
 
 5. **Grade**
+
+   - Run whatever grading scripts you have or grade manually and create a feedback file in each repository.
 
 6. **Push feedback to student's repository**
 
@@ -102,3 +107,4 @@ To use these scripts, please follow the following steps:
    
    # This will go through all repos in the subdirectories and update them to the latest commit.
    ```
+
