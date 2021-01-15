@@ -84,6 +84,7 @@ To use these scripts, please follow the following steps:
    # This will go through all repos in the subdirectories (check directory structure above), 
    # push every file named 'feedback.txt' to corresponding repositories, 
    # so to name all feedback files with the same name is a good move.
+   
    # Because the collection process leaves the repository in a detached state, 
    # this script will checkout main branch, pull with rebase, and push.
    ```
