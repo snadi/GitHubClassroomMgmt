@@ -55,7 +55,7 @@ To use these scripts, please follow the following steps:
 2. **Configure**
 
    - Open `config`, make your own configuration. Typically, you need to change `username`, `prefix` and `deadline`.
-   - `Prefix` is the name of lab or assignment you are grading (e.g., assignment1).
+   - `prefix` is the name of lab or assignment you are grading (e.g., assignment1).
    - If you want to collect all repos, provide no value to key `list`.
    - If you want to collect repos with the latest commit, provide no value to key `deadline`. Otherwise, the script finds the closest commit that happens before a given deadline (inclusive) and clones/checks out the repository at that commit.
 
