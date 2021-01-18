@@ -49,24 +49,29 @@ These scripts have been tested with Python 3.9.1(latest).
 
 To use these scripts, please follow the following steps:
 
-1. **Generate a personal access token**	
+1. **Add SSH Keys to your GitHub Account**
+
+   - Follow the steps on this website: https://www.inmotionhosting.com/support/server/ssh/how-to-add-ssh-keys-to-your-github-account
+
+2. **Generate a personal access token**	
 
    - Go to https://github.com/settings/tokens, click `Generate new token`, select all scopes and click `Generate token`.
 
    - Remember to copy the token and paste it to a file created by yourself named `token_file.txt`.
 
-2. **Configure**
+3. **Configure**
 
    - Open `config`, make your own configuration. Typically, you need to change `username`, `prefix` and `deadline`.
    - `prefix` is the name of lab or assignment you are grading (e.g., assignment1).
    - If you want to collect all repos, provide no value to key `list`. Otherwise, use `ccid_list.txt` as value.
    - If you want to collect repos with the latest commit, provide no value to key `deadline`. Otherwise, the script finds the closest commit that happens before a given deadline (inclusive) and clones/checks out the repository at that commit. 
-3. **Add ccids**
+
+4. **Add ccids**
 
    - Open `ccid_list.txt`, paste ccids you need to grade to this file.
    - All ccids are emails (e.g., zicun@ualberta.ca), one ccid per line.
 
-4. **Collect repositories**
+5. **Collect repositories**
 
    ```shell
    # Run this command in the root directory.
@@ -78,11 +83,11 @@ To use these scripts, please follow the following steps:
    # where all the repos for assignment1 will be cloned to.
    ```
 
-5. **Grade**
+6. **Grade**
 
    - Run whatever grading scripts you have or grade manually and create a feedback file in each repository.
 
-6. **Push feedback to student's repository**
+7. **Push feedback to student's repository**
 
    ```shell
    # If your feedback is in 'feedback.md', run this command in the root directory.
@@ -97,7 +102,7 @@ To use these scripts, please follow the following steps:
    # this script will checkout main branch, pull with rebase, and push.
    ```
 
-7. **Update repositories (optional)**
+8. **Update repositories (optional)**
 
    ```shell
    # Run this command in the root directory.
