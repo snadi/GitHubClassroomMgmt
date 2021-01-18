@@ -51,7 +51,7 @@ To use these scripts, please follow the following steps:
 
 1. **Add SSH keys to your GitHub account**
 
-   - Follow the steps on this website: https://www.inmotionhosting.com/support/server/ssh/how-to-add-ssh-keys-to-your-github-account
+   - Follow the steps on this website: https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account
 
 2. **Generate a personal access token**	
 
