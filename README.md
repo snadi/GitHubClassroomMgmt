@@ -49,7 +49,7 @@ These scripts have been tested with Python 3.9.1(latest).
 
 To use these scripts, please follow the following steps:
 
-1. **Add SSH Keys to your GitHub Account**
+1. **Add SSH keys to your GitHub account**
 
    - Follow the steps on this website: https://www.inmotionhosting.com/support/server/ssh/how-to-add-ssh-keys-to-your-github-account
 
