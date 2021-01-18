@@ -35,7 +35,7 @@ These scripts have been tested with Python 3.9.1(latest).
 ├── assignment1                 # A subdirectory named with an assignment or lab name 			│		│	
 │   │                           # It's automatically created after running collect_repos.py
 │   ├── repo1 
-│   │   ├── feedback.txt        # Feedback you made. Could have been generated 
+│   │   ├── feedback.md         # Feedback you made. Could have been generated 
 │   │   │                       # with marking scripts you had or added manually
 │   │   └── ...
 │   ├── repo2                   # Student's repository (e.g., labs-GithubUsername)	
@@ -85,12 +85,12 @@ To use these scripts, please follow the following steps:
 6. **Push feedback to student's repository**
 
    ```shell
-   # If your feedback is in 'feedback.txt', run this command in the root directory.
+   # If your feedback is in 'feedback.md', run this command in the root directory.
    
-   ./push_feedback.sh feedback.txt
+   ./push_feedback.sh feedback.md
    
    # This will go through all repos in the subdirectories (check directory structure above), 
-   # push every file named 'feedback.txt' to corresponding repositories, 
+   # push every file named 'feedback.md' to corresponding repositories, 
    # so to name all feedback files with the same name is a good move.
    
    # Because the collection process leaves the repository in a detached state, 
