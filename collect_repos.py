@@ -9,6 +9,9 @@ import subprocess
 import csv
 import configparser
 import os
+import logging
+
+logger = logging.getLogger('Logger')
 
 def get_repo(repo, dir):
 	repoDir = os.path.join(dir, repo.name)
@@ -24,7 +27,7 @@ def get_repo(repo, dir):
 			os.chdir(repoDir)
 			subprocess.call("git checkout \"`git rev-list --all -n 1 --first-parent --before=\"" + deadline + "\"`\"", shell=True);
 
-def run(username, token, organization, prefix, list, deadline):
+def run(username, token, organization, prefix, ccid_list, deadline):
 	with open(token, 'r') as f:
 		token = f.readline().strip()
 
@@ -44,10 +47,14 @@ def run(username, token, organization, prefix, list, deadline):
 	with open('student_list.csv', mode='r') as f:
 		reader = csv.reader(f)
 		mapping = {rows[0]:rows[1] for rows in reader}
-
-	if list:
-		with open(list, 'r') as f:
+	
+	no_match = []
+	if ccid_list:
+		with open(ccid_list, 'r') as f:
 			ccids = [ccid.strip() for ccid in f.readlines()]
+			map_k = mapping.keys()
+			no_match = ccids - map_k
+			ccids = list(set(ccids) - no_match)
 			gh_usernames = [mapping[ccid] for ccid in ccids]  #convert ccid to github username
 	else:
 		gh_usernames = []
@@ -58,6 +65,11 @@ def run(username, token, organization, prefix, list, deadline):
 				get_repo(repo, newDir)
 		elif repo.name.startswith(prefix):
 			get_repo(repo, newDir)
+	
+	if no_match:
+		logger.error("\n\n\nCould not find these ccids in the student list:")
+		for ccid in no_match:
+			logger.error(ccid)
 
 if __name__ == '__main__':
 	config = configparser.ConfigParser()
@@ -68,7 +80,7 @@ if __name__ == '__main__':
 	token = config['token']
 	organization = config['organization']
 	prefix = config['prefix']
-	list = config['list'] and config['list'] or None
+	ccid_list = config['ccid_list'] and config['ccid_list'] or None
 	deadline = config['deadline'] and config['deadline'] or None
 	
-	run(username, token, organization, prefix, list, deadline)
+	run(username, token, organization, prefix, ccid_list, deadline)

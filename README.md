@@ -68,6 +68,9 @@ To use these scripts, please follow the following steps:
 
 4. **Add ccids**
 
+   - Copy all CCID-GitHubUsername pairs from [GitHub Classroom Roster](https://docs.google.com/spreadsheets/d/1ccueXQgTkS_DWQttuVNnd1wJ1-K7Mp_oFlIvTq5gnrw/edit#gid=0).
+   - Paste them to `student_list.csv`.
+
    - Open `ccid_list.txt`, paste ccids you need to grade to this file.
    - All ccids are emails (e.g., zicun@ualberta.ca), one ccid per line.
 
