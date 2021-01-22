@@ -112,7 +112,7 @@ To use these scripts, please follow the following steps:
    # This will go through all repos in the subdirectories and update them to the latest commit.
    ```
 
-##Troubleshooting
+## Troubleshooting
    - **github3.py installation issuses**
 
 As described above, you need to install github3.py in order to use the scripts, and if it's your first time using the GitHub module on the lab machines, you may encounter the below errors when trying to install the github3 module:
