@@ -68,8 +68,7 @@ To use these scripts, please follow the following steps:
 
 4. **Add ccids**
 
-   - Copy all CCID-GitHubUsername pairs from [GitHub Classroom Roster](https://docs.google.com/spreadsheets/d/1ccueXQgTkS_DWQttuVNnd1wJ1-K7Mp_oFlIvTq5gnrw/edit#gid=0).
-   - Paste them to `student_list.csv`.
+   - Fill `student_list.csv` with CCID-GitHubUsername pairs from the course.
 
    - Open `ccid_list.txt`, paste ccids you need to grade to this file.
    - All ccids are emails (e.g., zicun@ualberta.ca), one ccid per line.
@@ -84,6 +83,9 @@ To use these scripts, please follow the following steps:
    # If you are grading assignment1, 
    # a directory called 'assignment1' will be created, 
    # where all the repos for assignment1 will be cloned to.
+   
+   # At the end, the script will output some error messages 
+   # including any ccid it couldn't find in the student list.
    ```
 
 6. **Grade**
