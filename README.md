@@ -118,20 +118,31 @@ To use these scripts, please follow the following steps:
    ```
 
 ## Troubleshooting
-   - **github3.py installation issuses**
 
-As described above, you need to install github3.py in order to use the scripts, and if it's your first time using the GitHub module on the lab machines, you may encounter the below errors when trying to install the github3 module:
+1. **github3.py installation issuses**
+   
+   As described above, you need to install github3.py in order to use the scripts, and if it's your first time using the GitHub module on the lab machines, you may encounter the below errors when trying to install the github3 module:
+   
+   ```
+   Command "/usr/bin/python3 -u -c "import setuptools, tokenize;__file__='/tmp/pip-build-
+   89vz819b/cryptography/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).
+   read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-197ans87-record/
+   install-record.txt --single-version-externally-managed --compile --user --prefix=" failed 
+   with error code 1 in /tmp/pip-build-89vz819b/cryptography/
+   ```
 
-  `Command "/usr/bin/python3 -u -c "import setuptools, tokenize;__file__='/tmp/pip-build-89vz819b/cryptography/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-197ans87-record/install-record.txt --single-version-externally-managed --compile --user --prefix=" failed with error code 1 in /tmp/pip-build-89vz819b/cryptography/`
+   or
 
-or
+   ```
+   Failed buidling wheel for cryptography
+   ```
 
-  `Failed buidling wheel for cryptography`
+   Running the command below fixes the above errors, and then you'll be able to run the installation as descibed under `Quick Installation Steps`:
 
-Running the command below fixes the above errors, and then you'll be able to run the installation as descibed under **Quick Installation Steps**:
+   ```
+   pip3 install --upgrade pip setuptools wheel
+   ```
 
-   `pip3 install --upgrade pip setuptools wheel`
+2. **ccid_list.txt and student_list.csv file issues**
 
-   - **ccid_list.txt and student_list.csv file issues**
-
-If your **ccid_list.txt** or **student_list.csv** files are improperly formatted, the scripts may run into a `KeyError` in execution. Make sure there isn't a trailing newline at the bottom of the file; you may need to open the **student_list.csv** file in a text editor rather than spreadsheet software to correct the formatting.
+   If your `ccid_list.txt` or `student_list.csv` files are improperly formatted, the scripts may run into a `KeyError` in execution. Make sure there isn't a trailing newline at the bottom of the file; you may need to open the `student_list.csv` file in a text editor rather than spreadsheet software to correct the formatting.
