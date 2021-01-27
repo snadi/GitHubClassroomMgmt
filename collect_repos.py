@@ -14,9 +14,11 @@ import logging
 logger = logging.getLogger('Logger')
 
 def get_repo(repo, dir):
+	print("\n----\n{}\n----\n".format(repo.name))
 	repoDir = os.path.join(dir, repo.name)
 	if (os.path.exists(repoDir)): #check first that we don't already have a local copy of this repo
 		os.chdir(repoDir)
+		subprocess.call('git checkout main', shell=True)
 		subprocess.call('git pull', shell=True)
 		if deadline:
 			subprocess.call("git checkout \"`git rev-list --all -n 1 --first-parent --before=\"" + deadline + "\"`\"", shell=True);

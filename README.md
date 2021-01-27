@@ -109,11 +109,6 @@ To use these scripts, please follow the following steps:
 
 8. **Update repositories (optional)**
 
-   ```shell
-   # Run this command in the root directory.
-   
-   ./update_repos.sh
-   
-   # This will go through all repos in the subdirectories and update them to the latest commit.
-   ```
+   - Because all labs of one student are in one repository, every time when we start grading a new lab, we need to assign a new value to `deadline` and run `python3 collect_repos.py`.
+   - All repositories will be updated to the closest commit before the new deadline.
 
