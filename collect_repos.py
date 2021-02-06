@@ -29,7 +29,7 @@ def get_repo(repo, dir):
 			os.chdir(repoDir)
 			subprocess.call("git checkout \"`git rev-list --all -n 1 --first-parent --before=\"" + deadline + "\"`\"", shell=True);
 
-def run(username, token, organization, prefix, ccid_list, deadline):
+def run(username, token, organization, prefix, ccid_list, deadline, roster):
 	with open(token, 'r') as f:
 		token = f.readline().strip()
 
@@ -46,7 +46,7 @@ def run(username, token, organization, prefix, ccid_list, deadline):
 	if not os.path.exists(newDir):
 		os.mkdir(newDir)
 
-	with open('student_list.csv', mode='r') as f:
+	with open(roster, mode='r') as f:
 		reader = csv.reader(f)
 		mapping = {rows[0]:rows[1] for rows in reader}
 	
@@ -84,5 +84,6 @@ if __name__ == '__main__':
 	prefix = config['prefix']
 	ccid_list = config['ccid_list'] and config['ccid_list'] or None
 	deadline = config['deadline'] and config['deadline'] or None
+	roster = config['roster']
 	
-	run(username, token, organization, prefix, ccid_list, deadline)
+	run(username, token, organization, prefix, ccid_list, deadline, roster)

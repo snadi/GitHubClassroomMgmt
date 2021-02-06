@@ -28,10 +28,11 @@ These scripts have been tested with Python 3.9.1(latest).
 ├── push_feedback.sh            # Push feedback to all repos
 ├── README.md                   # This file
 ├── requirements.txt            # For dependencies installation
-├── student_list.csv            # A mapping from ccids to github usernames
 ├── token_file.txt              # Your Github access token(You need to create this file)
 ├── update_repos.sh             # Update all repos
 ├── team_check.py               # Cross-check student teams
+├── roster.csv                  # GitHub Classroom roster
+├── pairs.csv                   # Assignment pairs list
 │
 ├── assignment1                 # A subdirectory named with an assignment or lab name
 │   │                           # It's automatically created after running collect_repos.py
@@ -69,7 +70,7 @@ To use these scripts, please follow the following steps:
 
 4. **Add ccids**
 
-   - Fill `student_list.csv` with CCID-GitHubUsername pairs from the course.
+   - Download GitHub Classroom roster to the root directory, rename it to `roster.csv`.
 
    - Open `ccid_list.txt`, paste ccids you need to grade to this file.
    - All ccids are emails (e.g., zicun@ualberta.ca), one ccid per line.
@@ -115,7 +116,7 @@ To use these scripts, please follow the following steps:
 
 9. **Cross-check student teams (optional)**
 
-   - Download assignment pairs list and GitHub Classroom roster to the root directory, rename them to `pairs.csv` and `roster.csv`, respectively. 
+   - Download assignment pairs list to the root directory, rename it to `pairs.csv`.
 
      ```shell
      # Run this command in the root directory
@@ -131,8 +132,8 @@ To use these scripts, please follow the following steps:
 
    - The results will be printed out in the terminal and be saved to two files:
 
-     - `problematic_students.csv`: compares the pairs.csv to the actual team memberships from the github organization.
-     - `problematic_students_roster.csv`: compare the pairs.csv to the downloaded github classroom roster.
+     - `problematic_students.csv`: compares the `pairs.csv` to the actual team memberships from the GitHub organization.
+     - `problematic_students_roster.csv`: compare the `pairs.csv` to the `roster.csv`.
 
    - Sample `problematic_students.csv` (empty cell means student joined no team):
 
