@@ -18,3 +18,9 @@ ccid_list = ccid_list.txt
 # Deadline of the given assignment or lab in format \"YYYY-MM-DD HH:MM:SS -0700\" where -0700 indicates the MST time zone
 # Provide no value to collect repos with the latest commit
 deadline = 2021-01-13 00:00:00 -0700
+
+# Assignment pairs list
+pairs = pairs.csv
+
+# GitHub Classroom roster
+roster = roster.csv
