@@ -129,7 +129,10 @@ To use these scripts, please follow the following steps:
      # GitHub Classroom roster is correct
      ```
 
-   - The results will be printed out in the terminal and be saved to two files `problematic_students.csv` and `problematic_students_roster.csv`.
+   - The results will be printed out in the terminal and be saved to two files:
+
+     - `problematic_students.csv`: compares the pairs.csv to the actual team memberships from the github organization.
+     - `problematic_students_roster.csv`: compare the pairs.csv to the downloaded github classroom roster.
 
    - Sample `problematic_students.csv` (empty cell means student joined no team):
 
@@ -147,7 +150,7 @@ To use these scripts, please follow the following steps:
      | xxx@ualberta.ca | xxx             | Asgmt1_Team3  |                |
      | xxx@ualberta.ca | xxx             |               | Asgmt1_Team10  |
 
-
+     
 
 ## Troubleshooting
 
