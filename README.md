@@ -33,7 +33,7 @@ These scripts have been tested with Python 3.9.1(latest).
 ├── update_repos.sh             # Update all repos
 ├── team_check.py               # Cross-check student teams
 │
-├── assignment1                 # A subdirectory named with an assignment or lab name 			│		│
+├── assignment1                 # A subdirectory named with an assignment or lab name
 │   │                           # It's automatically created after running collect_repos.py
 │   ├── repo1
 │   │   ├── feedback.md         # Feedback you made. Could have been generated
