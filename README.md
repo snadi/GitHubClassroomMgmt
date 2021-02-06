@@ -31,6 +31,7 @@ These scripts have been tested with Python 3.9.1(latest).
 ├── student_list.csv            # A mapping from ccids to github usernames
 ├── token_file.txt              # Your Github access token(You need to create this file)
 ├── update_repos.sh             # Update all repos
+├── team_check.py               # Cross-check student teams
 │
 ├── assignment1                 # A subdirectory named with an assignment or lab name 			│		│
 │   │                           # It's automatically created after running collect_repos.py
@@ -109,8 +110,44 @@ To use these scripts, please follow the following steps:
 
 8. **Update repositories (optional)**
 
-   - Because all labs of one student are in one repository, every time when we start grading a new lab, we need to assign a new value to `deadline` and run `python3 collect_repos.py`.
+   - Because all labs of one student are in one repository, every time when you start grading a new lab, you need to assign a new value to `deadline` and run `python3 collect_repos.py`.
    - All repositories will be updated to the closest commit before the new deadline.
+
+9. **Cross-check student teams (optional)**
+
+   - Download assignment pairs list and GitHub Classroom roster to the root directory, rename them to `pairs.csv` and `roster.csv`, respectively. 
+
+     ```shell
+     # Run this command in the root directory
+     
+     python3 team_check.py
+     
+     # For each student in the assignment pairs list
+     # This script will check if they join the correct team on GitHub
+     
+     # It will also check if the team information in
+     # GitHub Classroom roster is correct
+     ```
+
+   - The results will be printed out in the terminal and be saved to two files `problematic_students.csv` and `problematic_students_roster.csv`.
+
+   - Sample `problematic_students.csv` (empty cell means student joined no team):
+
+     | CCID            | GitHub username | expected team | current team  |
+     | --------------- | --------------- | ------------- | ------------- |
+     | xxx@ualberta.ca | xxx             | Asgmt1_Team1  | Asgmt1_Team2  |
+     | xxx@ualberta.ca | xxx             | Asgmt1_Team3  |               |
+     | xxx@ualberta.ca | xxx             | Asgmt1_Team5  | Asgmt1_Team10 |
+
+   - Sample `problematic_students_roster.csv`:
+
+     | CCID            | GitHub username | expected team | team in roster |
+     | --------------- | --------------- | ------------- | -------------- |
+     | xxx@ualberta.ca | xxx             | Asgmt1_Team1  |                |
+     | xxx@ualberta.ca | xxx             | Asgmt1_Team3  |                |
+     | xxx@ualberta.ca | xxx             |               | Asgmt1_Team10  |
+
+
 
 ## Troubleshooting
 
