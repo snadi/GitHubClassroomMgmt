@@ -123,17 +123,16 @@ To use these scripts, please follow the following steps:
      
      python3 team_check.py
      
-     # For each student in the assignment pairs list
+     # For each student in the pairs.csv
      # This script will check if they join the correct team on GitHub
      
-     # It will also check if the team information in
-     # GitHub Classroom roster is correct
+     # It will also check if the team information in roster.csv is correct
      ```
 
    - The results will be printed out in the terminal and be saved to two files:
 
      - `problematic_students.csv`: compares the `pairs.csv` to the actual team memberships from the GitHub organization.
-     - `problematic_students_roster.csv`: compare the `pairs.csv` to the `roster.csv`.
+     - `problematic_students_roster.csv`: compares the `pairs.csv` to the `roster.csv`.
 
    - Sample `problematic_students.csv` (empty cell means student joined no team):
 
