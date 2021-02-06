@@ -22,7 +22,8 @@ These scripts have been tested with Python 3.9.1(latest).
 
 ```
 .
-├── ccid_list.txt               # Contains ccids you need to grade
+├── ccids.txt                   # Contains ccids you need to grade
+├── repo_names.txt              # Contains repo names you need to grade
 ├── collect_repos.py            # Collect repos
 ├── config                      # Configration file for collect_repos.py
 ├── push_feedback.sh            # Push feedback to all repos
@@ -68,20 +69,25 @@ To use these scripts, please follow the following steps:
    - If you want to collect all repos, provide no value to key `list`. Otherwise, use `ccid_list.txt` as value.
    - If you want to collect repos with the latest commit, provide no value to key `deadline`. Otherwise, the script finds the closest commit that happens before a given deadline (inclusive) and clones/checks out the repository at that commit.
 
-4. **Add ccids**
+4. **(For labs) Add ccids**
 
    - Download GitHub Classroom roster to the root directory, rename it to `roster.csv`.
-
-   - Open `ccid_list.txt`, paste ccids you need to grade to this file.
+- Open `ccids.txt`, paste ccids you need to grade to this file.
    - All ccids are emails (e.g., zicun@ualberta.ca), one ccid per line.
+   - Make sure set `repo_name_list =   ` (no value is supplied) in `config`. Otherwise, the script won't look at `ccids.txt`.
 
-5. **Collect repositories**
+5. **(For assignments) Add repo names** 
+
+   - Open `repo_names.txt`, paste repository names (team names in assignments) to this file, one name per line.
+   - Open `config`, set `repo_name_list = repo_names.txt`.
+
+6. **Collect repositories**
 
    ```shell
    # Run this command in the root directory.
-
+   
    python3 collect_repos.py
-
+   
    # If you are grading assignment1,
    # a directory called 'assignment1' will be created,
    # where all the repos for assignment1 will be cloned to.
@@ -90,31 +96,31 @@ To use these scripts, please follow the following steps:
    # including any ccid it couldn't find in the student list.
    ```
 
-6. **Grade**
+7. **Grade**
 
    - Run whatever grading scripts you have or grade manually and create a feedback file in each repository.
 
-7. **Push feedback to student's repository**
+8. **Push feedback to student's repository**
 
    ```shell
    # If your feedback is in 'feedback.md', run this command in the root directory.
-
+   
    ./push_feedback.sh feedback.md
-
+   
    # This will go through all repos in the subdirectories (check directory structure above),
    # push every file named 'feedback.md' to corresponding repositories,
    # so to name all feedback files with the same name is a good move.
-
+   
    # Because the collection process leaves the repository in a detached state,
    # this script will checkout main branch, pull with rebase, and push.
    ```
 
-8. **Update repositories (optional)**
+9. **Update repositories (optional)**
 
    - Because all labs of one student are in one repository, every time when you start grading a new lab, you need to assign a new value to `deadline` and run `python3 collect_repos.py`.
    - All repositories will be updated to the closest commit before the new deadline.
 
-9. **Cross-check student teams (optional)**
+10. **Cross-check student teams (optional)**
 
    - Download assignment pairs list to the root directory, rename it to `pairs.csv`.
 

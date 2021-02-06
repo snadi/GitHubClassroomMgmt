@@ -57,8 +57,8 @@ pairs_result['current team'] = pairs_result['GitHub username'].apply(lambda x: \
         and (len(x) == 1 and x[0] or str(x)) or np.nan)
 
 pairs_result = pairs_result.replace(np.nan, '')
-pairs_result = pairs_result.loc[pairs_result['expected team'].str[-3:] != \
-    pairs_result['current team'].str[-3:]].reset_index(drop=True)
+pairs_result = pairs_result.loc[pairs_result['expected team'] != \
+    pairs_result['current team']].reset_index(drop=True)
 
 print('\n-----\nProblematic students\n-----\n')
 print(pairs_result)
@@ -70,8 +70,8 @@ roster_result = pd.merge(pairs_df, roster_df, on='CCID', how='outer')
 roster_result = roster_result[['CCID', 'GitHub username_y', 'expected team_x', 'expected team_y']]
 roster_result.columns = header[:3] + ['team in roster']
 roster_result = roster_result.replace(np.nan, '')
-roster_result = roster_result.loc[roster_result['expected team'].str[-3:] != \
-    roster_result['team in roster'].str[-3:]].reset_index(drop=True)
+roster_result = roster_result.loc[roster_result['expected team'] != \
+    roster_result['team in roster']].reset_index(drop=True)
 
 print('\n-----\nRoster\n-----\n')
 print(roster_result)
