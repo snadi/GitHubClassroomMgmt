@@ -72,7 +72,7 @@ To use these scripts, please follow the following steps:
 4. **(For labs) Add ccids**
 
    - Download GitHub Classroom roster to the root directory, rename it to `roster.csv`.
-- Open `ccids.txt`, paste ccids you need to grade to this file.
+   - Open `ccids.txt`, paste ccids you need to grade to this file.
    - All ccids are emails (e.g., zicun@ualberta.ca), one ccid per line.
    - Make sure set `repo_name_list =   ` (no value is supplied) in `config`. Otherwise, the script won't look at `ccids.txt`.
 
