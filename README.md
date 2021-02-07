@@ -23,7 +23,7 @@ These scripts have been tested with Python 3.9.1(latest).
 ```
 .
 ├── ccids.txt                   # Contains ccids you need to grade
-├── repo_names.txt              # Contains repo names you need to grade
+├── repo_names.txt              # Contains repo names you need to grade (these are typically the repo name suffixes corresponding to either github usernames or team names -- See point 5 below)
 ├── collect_repos.py            # Collect repos
 ├── config                      # Configration file for collect_repos.py
 ├── push_feedback.sh            # Push feedback to all repos
