@@ -1,4 +1,5 @@
 token_file.txt
+*.csv
 .DS_Store
 .vscode/*
 labs/*

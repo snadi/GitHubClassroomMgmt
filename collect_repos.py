@@ -29,7 +29,7 @@ def get_repo(repo, dir):
 			os.chdir(repoDir)
 			subprocess.call("git checkout \"`git rev-list --all -n 1 --first-parent --before=\"" + deadline + "\"`\"", shell=True);
 
-def run(username, token, organization, prefix, ccid_list, deadline):
+def run(username, token, organization, prefix, ccid_list, repo_name_list, deadline, roster):
 	with open(token, 'r') as f:
 		token = f.readline().strip()
 
@@ -46,30 +46,33 @@ def run(username, token, organization, prefix, ccid_list, deadline):
 	if not os.path.exists(newDir):
 		os.mkdir(newDir)
 
-	with open('student_list.csv', mode='r') as f:
+	with open(roster, mode='r') as f:
 		reader = csv.reader(f)
 		mapping = {rows[0]:rows[1] for rows in reader}
 	
 	no_match = []
-	if ccid_list:
+	if repo_name_list:
+		with open(repo_name_list, 'r') as f:
+			suffixes = [repo_name.strip() for repo_name in f.readlines()]
+	elif ccid_list:
 		with open(ccid_list, 'r') as f:
 			ccids = [ccid.strip() for ccid in f.readlines()]
 			map_k = mapping.keys()
 			no_match = ccids - map_k
 			ccids = list(set(ccids) - no_match)
-			gh_usernames = [mapping[ccid] for ccid in ccids]  #convert ccid to github username
+			suffixes = [mapping[ccid] for ccid in ccids]  #convert ccid to github username
 	else:
-		gh_usernames = []
+		suffixes = []
 
 	for repo in course.repositories():
-		if len(gh_usernames):
-			if repo.name.replace('{}-'.format(prefix), '') in gh_usernames:
+		if len(suffixes):
+			if prefix in repo.name and repo.name.replace('{}-'.format(prefix), '') in suffixes:
 				get_repo(repo, newDir)
 		elif repo.name.startswith(prefix):
 			get_repo(repo, newDir)
 	
 	if no_match:
-		logger.error("\n\n\nCould not find these ccids in the student list:")
+		logger.error("\n\n\nCould not find these CCIDs in the roster:")
 		for ccid in no_match:
 			logger.error(ccid)
 
@@ -82,7 +85,9 @@ if __name__ == '__main__':
 	token = config['token']
 	organization = config['organization']
 	prefix = config['prefix']
-	ccid_list = config['ccid_list'] and config['ccid_list'] or None
+	repo_name_list = config['repo_name_list'] and config['repo_name_list'] or None
+	ccid_list = repo_name_list and None or (config['ccid_list'] and config['ccid_list'] or None)
 	deadline = config['deadline'] and config['deadline'] or None
+	roster = config['roster']
 	
-	run(username, token, organization, prefix, ccid_list, deadline)
+	run(username, token, organization, prefix, ccid_list, repo_name_list, deadline, roster)

@@ -13,8 +13,18 @@ prefix = labs
 
 # CCID list
 # Provide no value to collect all repos
-ccid_list = ccid_list.txt
+ccid_list = ccids.txt
+
+# Repo name list
+# If a value is provided, the script won't look at the ccid_list
+repo_name_list = 
 
 # Deadline of the given assignment or lab in format \"YYYY-MM-DD HH:MM:SS -0700\" where -0700 indicates the MST time zone
 # Provide no value to collect repos with the latest commit
 deadline = 2021-01-13 00:00:00 -0700
+
+# Assignment pair list
+pairs = pairs.csv
+
+# GitHub Classroom roster
+roster = roster.csv
