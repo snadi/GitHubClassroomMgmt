@@ -53,7 +53,7 @@ def run(username, token, organization, prefix, ccid_list, repo_name_list, deadli
 	no_match = []
 	if repo_name_list:
 		with open(repo_name_list, 'r') as f:
-			suffixes = [repo_name.strip() for repo_name in f.readlines()]
+			suffixes = [repo_name.strip().lower() for repo_name in [s.strip().lower() for s in f.readlines()]]
 	elif ccid_list:
 		with open(ccid_list, 'r') as f:
 			ccids = [ccid.strip() for ccid in f.readlines()]
